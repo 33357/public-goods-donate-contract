@@ -14,6 +14,7 @@ contract Donate {
         mapping(address => bool) isShare;
         mapping(address => uint256) claimedPerShareAmount;
         string url;
+        string description;
     }
 
     mapping(uint256 => Project) public projectList;
@@ -22,13 +23,15 @@ contract Donate {
         address creator,
         uint256 shareLength,
         uint256 sharePer,
-        string memory url
+        string memory url,
+        string memory description
     ) public returns (uint256) {
         idLength++;
         projectList[idLength].creator = creator;
-        projectList[idLength].url = url;
         projectList[idLength].shareLength = shareLength;
         projectList[idLength].sharePer = sharePer;
+        projectList[idLength].url = url;
+        projectList[idLength].description = description;
         return idLength;
     }
 
